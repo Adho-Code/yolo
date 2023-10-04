@@ -6,19 +6,20 @@ const upload = multer();
 
 const productRoute = require('./routes/api/productRoute');
 
-// Connecting to the Database
-let mongodb_url = 'mongodb://localhost/';
-let dbName = 'yolomy';
-
-// define a url to connect to the database
-const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
-mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
-let db = mongoose.connection;
+// Connect to the MongoDB database
+// connecting the database
+let mongodb_url = 'mongodb+srv://adhogalgallo:uXxUdeqrE7LWgwFD@cluster0.wge4lfn.mongodb.net/?retryWrites=true&w=majority';
+let dbName = 'darkroom';
+mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
+    if (err) console.log(err)
+});
 
 // Check Connection
-db.once('open', ()=>{
-    console.log('Database connected successfully')
-})
+const db = mongoose.connection;
+db.once('open', () => {
+  console.log('Database connected successfully');
+});
+
 
 // Check for DB Errors
 db.on('error', (error)=>{
