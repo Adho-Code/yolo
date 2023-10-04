@@ -6,7 +6,6 @@ import Default_image from '../images/product_image.jpeg'
 
 function Product (props) {
 
-    
     return (
         <React.Fragment>
             <div className="col-12 col-sm-12 col-md-4" >
