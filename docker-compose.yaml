@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  backend:
+    build: ./backend
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend/src:/srv/app/admin-server/src
+    command: npm run start
+    networks:
+      - yolo-network
+
+  client:
+    build: ./client
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client/src:/srv/app/admin-client/src
+      - ./client/public:/srv/app/admin-client/public
+    command: npm run start
+    networks:
+      - yolo-network
