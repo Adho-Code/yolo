@@ -3,18 +3,18 @@
 FROM node:20.0.0-alpine3.17
 
 # setting the working directory
-RUN mkdir -p /srv/app/admin-client
-WORKDIR /srv/app/admin-client
+RUN mkdir -p /src/ip/test-client
+WORKDIR /src/ip/test-client
 
 # Copying the package.json files to the working directory
-COPY package*.json /srv/app/admin-client
+COPY package*.json /src/ip/test-client
 
 # Installing the dependencies
 RUN npm install --silent
 # RUN npm install react-scripts@3.3.1 -g --silent
 
 # Copying the rest of the files to the working directory
-COPY . /srv/app/admin-client
+COPY . /src/ip/test-client
 
 # Running the app
 CMD ["npm", "start"]
