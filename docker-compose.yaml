@@ -25,3 +25,9 @@ services:
     command: npm run start
     networks:
       - yolo-network
+
+networks:
+  yolo-network:
+    driver: bridge
+
+    

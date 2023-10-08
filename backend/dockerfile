@@ -1,5 +1,6 @@
+#Using a node alpine image
 FROM node:alpine3.18
-# working Directions
+
 # setting the working directory
 RUN mkdir -p /srv/app/admin-server
 WORKDIR /srv/app/admin-server

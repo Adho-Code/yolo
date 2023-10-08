@@ -17,3 +17,6 @@ COPY . /srv/app/admin-client
 
 # Running the app
 CMD ["npm", "start"]
+
+
+
