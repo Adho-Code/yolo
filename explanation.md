@@ -106,3 +106,45 @@ Run the following command to bring up the application:
 ### Good Practices
 Containers are named and tagged following Docker image tag naming standards for easy identification.
 
+
+
+
+
+
+## IP-3 Project
+Tasks
+
+1: Set up the Application server.
+C2: reate roles and define the following tasks separately:
+    `Install Docker.
+    `Clone repository.
+    `Docker Compose.
+3: Test the application to ensure it creates containers and runs successfully.
+
+## Set up Application Server
+
+  `Run vagrant init to initialize the Vagrantfile.
+     Modify the Vagrantfile with instructions to set up the Virtual Box.
+
+      - Create a playbook.yml file.
+      - Create an ansible.cfg file.
+      - Create a hosts file.
+      - Create Roles
+      - Create roles with each task as follows, which will generate different folders and modify main.yml for each task and vars files.
+
+## ansible-galaxy init roles/dvm-config
+## ansible-galaxy init roles/cinstall-docker
+## ansible-galaxy init roles/automation
+
+ - vm-config
+    - install-docker
+    - automation
+
+
+## Testing
+
+`Run docker-compose up to bring up the application.
+`Run vagrant provision to execute the playbook and set up Vagrant.
+`Run vagrant ssh to log in to Vagrant.
+`Execute sudo docker images to check created images.
+`Execute sudo docker ps -a to verify running containers and test the application.
