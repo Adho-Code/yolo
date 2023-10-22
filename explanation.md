@@ -115,7 +115,7 @@ Containers are named and tagged following Docker image tag naming standards for 
 Tasks
 
 1: Set up the Application server.
-C2: reate roles and define the following tasks separately:
+2: Create roles and define the following tasks separately:
     `Install Docker.
     `Clone repository.
     `Docker Compose.
