@@ -1,2 +1,18 @@
 ---
 # tasks file for automation
+- name: Clone Yolo from GitHub
+  git:
+        repo: https://github.com/Adho-Code/yolo.git
+        dest: /home/Documents/AdhoIP3/yolo
+        update: yes
+
+- name: Set the working directory to the cloned folder
+  command: cd /home/Documents/AdhoIP3/yolo
+  args:
+        chdir: /home/Documents/AdhoIP3/yolo
+        creates: /home/Documents/AdhoIP3/yolo
+
+- name: Run Docker Compose
+  command: docker-compose up -d
+  args:
+    chdir: /home/Documents/AdhoIP3/yolo  # Change the working directory to the cloned folder
