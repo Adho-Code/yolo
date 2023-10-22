@@ -12,3 +12,4 @@
   roles:
 
     - vm-config
+    - install-docker
