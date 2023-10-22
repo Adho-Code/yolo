@@ -5,9 +5,9 @@ services:
     # build: ./backend
     image: chukula/backend:1.0.0
     expose:
-      - 5000
+      - 5020
     ports:
-      - "5000:5000"
+      - "5020:5020"
     volumes:
       - ./backend/src:/src/ip/server/src
     command: npm run start
@@ -18,9 +18,9 @@ services:
     # build: ./client
     image: chukula/client:1.0.0
     expose:
-      - 3000
+      - 3090
     ports:
-      - "3000:3000"
+      - "3090:3090"
     volumes:
       - ./client/src:/src/ip/test-client/src
       - ./client/public:/src/ip/test-client/public
@@ -33,3 +33,4 @@ networks:
     driver: bridge
 
     
+

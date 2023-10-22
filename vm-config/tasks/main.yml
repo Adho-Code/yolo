@@ -26,10 +26,8 @@
       - libc-dev
       - make
       - pkg-config
-      - re2c re2c
+      - re2c
       - wget
     state: present
     update_cache: true
-      - wget
-    state: present
-    update_cache: true
+    
