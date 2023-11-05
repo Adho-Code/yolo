@@ -131,8 +131,8 @@ C2: reate roles and define the following tasks separately:
       - Create Roles
       - Create roles with each task as follows, which will generate different folders and modify main.yml for each task and vars files.
 
-## ansible-galaxy init roles/dvm-config
-## ansible-galaxy init roles/cinstall-docker
+## ansible-galaxy init roles/vm-config
+## ansible-galaxy init roles/install-docker
 ## ansible-galaxy init roles/automation
 
  - vm-config
