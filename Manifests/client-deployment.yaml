@@ -12,7 +12,20 @@ spec:
         app: client
     spec:
       containers:
-      - name: client
-        image: chukula/client:1.0.0
-        ports:
-        - containerPort: 3000
+        - name: client
+          image: chukula/client:1.0.0
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-deployment-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: client
+  ports:
+    - port: 3000
+      targetPort: 3000
