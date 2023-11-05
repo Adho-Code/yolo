@@ -1,31 +1,83 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: backend-deployemnt
+# spec:
+#   selector:
+#     matchLabels:
+#       app: backend
+#   template:
+#     metadata:
+#       labels:
+#         app: backend
+#     spec:
+#       containers:
+#         - name: backend
+#           image: chukula/backend:1.0.0
+#           ports:
+#             - containerPort: 5000
+
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: backend-deployment-service
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: backend
+#   ports:
+#     - port: 5000
+#       targetPort: 5000
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployemnt
+  name: backend
+  labels:
+    appName: yolobackend
+    serverClass: backend
 spec:
   selector:
     matchLabels:
-      app: backend
+      app: backendapp
+      tier: backend
+      track: stable
+  replicas: 1
   template:
     metadata:
       labels:
-        app: backend
+        app: backendapp
+        tier: backend
+        track: stable
     spec:
       containers:
         - name: backend
           image: chukula/backend:1.0.0
           ports:
-            - containerPort: 5000
-
+            - name: http
+              containerPort: 5000
+          resources:
+            limits:
+              cpu: "0.5"
+              memory: "512Mi"
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: server-pvc
 ---
 apiVersion: v1
-kind: Service
+kind: PersistentVolumeClaim
 metadata:
-  name: backend-deployment-service
+  name: server-pvc
 spec:
-  type: LoadBalancer
-  selector:
-    app: backend
-  ports:
-    - port: 5000
-      targetPort: 5000
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: standard
