@@ -110,7 +110,6 @@ Containers are named and tagged following Docker image tag naming standards for 
 
 
 
-
 ## IP-3 Project
 Tasks
 
@@ -148,3 +147,5 @@ C2: reate roles and define the following tasks separately:
 `Run vagrant ssh to log in to Vagrant.
 `Execute sudo docker images to check created images.
 `Execute sudo docker ps -a to verify running containers and test the application.
+
+
