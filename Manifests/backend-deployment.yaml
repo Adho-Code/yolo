@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: chukula/backend:1.0.0
+          image: gcr.io/yoloip4/backend:1.0.0
           ports:
             - containerPort: 3000
           resources:

@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: chukula/client:1.0.0
+          image: gcr.io/yoloip4/client:1.0.0
           ports:
             - containerPort: 3000
           resources:
