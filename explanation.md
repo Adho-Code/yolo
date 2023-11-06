@@ -149,3 +149,54 @@ C2: reate roles and define the following tasks separately:
 `Execute sudo docker ps -a to verify running containers and test the application.
 
 
+## IP4
+
+# YOLO-App Kubernetes Deployment Readme
+
+## Overview
+
+This readme provides a concise guide for deploying the YOLO-App on Kubernetes, specifically on Google Kubernetes Engine (GKE). The application is structured with stateful components for the database and stateless components for the backend.
+
+### Database (Stateful Application)
+
+- *Component*: MongoDB
+- *Orchestration*: StatefulSets
+  - Stable network identity and persistent storage.
+  - Unique hostnames for each pod ensure reliability.
+  - Data persists even with pod rescheduling.
+
+### Backend (Stateless Application)
+
+- *Component*: YOLO-App Backend
+- *Orchestration*: Deployments
+  - Stateless architecture; no reliance on local storage.
+  - Horizontal scaling for dynamic instance management.
+
+## Replication for High Availability
+
+- *Frontend & Backend Deployments*:
+  - 2 replicas for each deployment.
+  - Ensures continuous availability and backup during disruptions.
+
+## Deployment Steps
+
+1. *Database Setup*:
+   - Deploy MongoDB using StatefulSets.
+   - Verify stable network identity and persistent storage.
+
+2. *Backend Deployment*:
+   - Deploy YOLO-App Backend with Deployments.
+   - Confirm stateless architecture and dynamic scaling.
+
+3. *Replication Configuration*:
+   - Set up 2 replicas for frontend and backend.
+   - Adjust configurations for demand and redundancy.
+
+4. *Testing and Monitoring*:
+   - Thoroughly test components.
+   - Implement monitoring for efficient issue resolution.
+
+5. *Scaling*:
+   - Utilize Kubernetes scaling for dynamic adjustments.
+   - Monitor resources and scale based on demand.
+

@@ -21,3 +21,7 @@ Make sure that you have the following installed:
  `npm start`
 
  ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+
+ ## http://34.170.207.137:3000/
+
+ current sep up running with the above link
