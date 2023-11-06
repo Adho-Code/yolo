@@ -1,51 +1,38 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  labels:
-    appName: yolobackend
-    serverClass: backend
+  name: backend-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: backendapp
-      tier: backend
-      track: stable
-  replicas: 1
+      app: backend
   template:
     metadata:
       labels:
-        app: backendapp
-        tier: backend
-        track: stable
+        app: backend
     spec:
       containers:
         - name: backend
           image: chukula/backend:1.0.0
           ports:
-            - name: http
-              containerPort: 5000
+            - containerPort: 3000
           resources:
             limits:
               cpu: "0.5"
               memory: "512Mi"
-          volumeMounts:
-            - name: data
-              mountPath: /data
-      volumes:
-        - name: data
-          persistentVolumeClaim:
-            claimName: server-pvc
+
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: Service
 metadata:
-  name: server-pvc
+  name: backend-deployment-service
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: standard
+  type: NodePort
+  selector:
+    app: backend
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30500
+  type: LoadBalancer

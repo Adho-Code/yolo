@@ -1,44 +1,37 @@
----
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-deployment
-  labels:
-    appName: yolo
-    serverClass : client
-    memoryOptimised : "yes"
-    component: frontend
-  annotations:
-    description: "Deployment for frontend application"
+  name: client-yolo-deployment
 spec:
-  replicas: 1
   selector:
     matchLabels:
-      appName : yolo
-      memoryOptimised : "yes" 
-      app: yoloclient
-      component: frontend
+      app: yolo-client
   template:
     metadata:
       labels:
-        appName : yolo
-        memoryOptimised : "yes"
-        app: yoloclient
-        component: frontend
+        app: yolo-client
     spec:
       containers:
         - name: client
           image: chukula/client:1.0.0
-          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
             limits:
               cpu: "0.5"
-              memory: "512Mi"              
-          env:
-            - name: CLIENT_HOST
-              value: "yolo-backend-service"
-            - name: CLIENT_PORT
-              value: "5000"
+              memory: "512Mi"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-deployment-service
+spec:
+  type: NodePort
+  selector:
+    app: yolo-client
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30300
+  type: LoadBalancer
