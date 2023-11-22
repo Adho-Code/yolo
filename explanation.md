@@ -95,6 +95,7 @@ Below is the flow:
 
 - Pushing: Push committed changes to the remote repository.
 
+
 ### Application Execution
 Run the following command to bring up the application:
 
@@ -107,10 +108,6 @@ Run the following command to bring up the application:
 Containers are named and tagged following Docker image tag naming standards for easy identification.
 
 
-
-
-
-
 ## IP-3 Project
 Tasks
 
@@ -121,7 +118,7 @@ Tasks
     `Docker Compose.
 3: Test the application to ensure it creates containers and runs successfully.
 
-## Set up Application Server
+## Set up Application Server 
 
   `Run vagrant init to initialize the Vagrantfile.
      Modify the Vagrantfile with instructions to set up the Virtual Box.
@@ -132,14 +129,13 @@ Tasks
       - Create Roles
       - Create roles with each task as follows, which will generate different folders and modify main.yml for each task and vars files.
 
-## ansible-galaxy init roles/dvm-config
-## ansible-galaxy init roles/cinstall-docker
-## ansible-galaxy init roles/automation
+  ## ansible-galaxy init roles/vm-config
+  ## ansible-galaxy init roles/install-docker
+  ## ansible-galaxy init roles/automation
 
  - vm-config
     - install-docker
     - automation
-
 
 ## Testing
 
@@ -147,4 +143,7 @@ Tasks
 `Run vagrant provision to execute the playbook and set up Vagrant.
 `Run vagrant ssh to log in to Vagrant.
 `Execute sudo docker images to check created images.
-`Execute sudo docker ps -a to verify running containers and test the application.
+`Execute sudo docker ps -a to verify running containers and test the application. 
+
+
+
